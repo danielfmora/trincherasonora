@@ -50,27 +50,33 @@
             left: 0;
         }
         
-        /* ESTILOS MODIFICADOS PARA EL REPRODUCTOR FLOTANTE */
+        /* ESTILOS MODIFICADOS PARA EL REPRODUCTOR FIJO */
         .player-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 320px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
-            border: 2px solid #e83e8c;
-            border-radius: 12px;
+            border-top: 2px solid #e83e8c;
             z-index: 1000;
-            padding: 15px;
-            box-shadow: 0 5px 25px rgba(232, 62, 140, 0.3);
-            transition: all 0.3s ease;
+            padding: 10px 15px;
+            box-shadow: 0 -5px 25px rgba(232, 62, 140, 0.3);
         }
         
         .player-container .cstrEmbed {
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .player-container .cstrEmbed a {
             display: none; /* Ocultar enlaces no deseados */
+        }
+
+        /* Asegurar que el contenido no queda oculto detrás del reproductor */
+        body {
+            padding-bottom: 70px;
         }
         
         /* Ajuste para la navegación */
@@ -331,19 +337,6 @@
         </div>
     </footer>
 
-    <!-- Sección 1: Reproductor flotante (posición modificada) -->
-    <div class="player-container">
-        <div data-type="newStreamPlayer" 
-             data-publicToken="6246c42a-7d5f-42eb-abe6-237ecca28ca0" 
-             data-theme="dark" 
-             data-color="e83e8c" 
-             data-channelId="9efcfc4b-91fe-4088-82dc-a8b5e1d2cb9d" 
-             data-rendered="false" class="cstrEmbed">
-            <a href="https://www.caster.fm">Shoutcast Hosting</a> 
-            <a href="https://www.caster.fm">Stream Hosting</a> 
-            <a href="https://www.caster.fm">Radio Server Hosting</a>
-        </div>
-    </div>
 
     <!-- Script para evitar recarga del reproductor al navegar -->
     <script>
@@ -379,6 +372,20 @@
         });
     </script>
     
+    <!-- Reproductor fijo en la parte inferior -->
+    <div class="player-container">
+        <div data-type="newStreamPlayer" 
+             data-publicToken="6246c42a-7d5f-42eb-abe6-237ecca28ca0" 
+             data-theme="dark" 
+             data-color="e83e8c" 
+             data-channelId="9efcfc4b-91fe-4088-82dc-a8b5e1d2cb9d" 
+             data-rendered="false" class="cstrEmbed">
+            <a href="https://www.caster.fm">Shoutcast Hosting</a> 
+            <a href="https://www.caster.fm">Stream Hosting</a> 
+            <a href="https://www.caster.fm">Radio Server Hosting</a>
+        </div>
+    </div>
+
     <!-- Script del reproductor (debe ir al final para no bloquear la renderización) -->
     <script src="https://cdn.cloud.caster.fm/widgets/embed.js" defer></script>
 </body>
